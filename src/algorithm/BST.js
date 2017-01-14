@@ -99,6 +99,7 @@ class BinarySearchTree {
     var current = this.root;
     var parent = null;
 
+    // Find remove place
     while (data != current.data) {
       parent = current;
       if (data < current.data) {
@@ -108,26 +109,53 @@ class BinarySearchTree {
       }
     }
 
+    // If has remove element
     if (current) {
+      // 1. no left, no right
       if (!current.left && !current.right) {
         if (data === parent.left.data) {
           parent.left = null;
         } else {
           parent.right = null;
         }
+        return;
       }
+      // 2. Just right value
       if (!current.left) {
-        _getSmallest();
+        if (data === parent.left.data) {
+          parent.left = current.right;
+        } else {
+          parent.right = current.right;
+        }
+        return;
       }
+      // 3. Just left value
       if (!current.right) {
-        _getSmallest();
+        if (data === parent.left.data) {
+          parent.left = current.left;
+        } else {
+          parent.right = current.left;
+        }
+        return;
+      }
+      // 4. Has two side data
+      if (current.left && current.right) {
+        var smallVarData = _removeSmallest(current.right);  // Remove smallest value
+        current.data = smallVarData;  // Replace smallest value with remove element.
+        return;
       }
     }
     console.log("no data");
   }
 
-  _getSmallest() {
-
+  _removeSmallest(node) {
+    var parent = null;
+    while(node.left) {
+      parent = node;
+      node = node.left;
+    }
+    parent.left = null;
+    return node.data;
   }
 
   class TreeNode {
