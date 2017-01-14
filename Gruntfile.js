@@ -10,9 +10,13 @@ module.exports = function(grunt) {
           sourceMap: true,
           presets: ['es2015']
         },
-        files: {
-          'build/list.js': 'src/list.js',
-        }
+        files: [{
+          expand: true,
+          cwd: 'src/',
+          src: ['*.js'],
+          dest: 'build',
+          ext: '.js'
+        }]
       }
     },
     mochaTest: {
