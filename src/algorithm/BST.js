@@ -157,16 +157,16 @@ class BinarySearchTree {
     parent.left = null;
     return node.data;
   }
+}
 
-  class TreeNode {
-    constructor(data, left = null, right = null) {
-      this.data = data;
-      this.left = null;
-      this.right = null;
-    }
+class TreeNode {
+  constructor(data, left = null, right = null) {
+    this.data = data;
+    this.left = null;
+    this.right = null;
+  }
 
-    getData() {
-      return this.data;
-    }
+  getData() {
+    return this.data;
   }
 }
