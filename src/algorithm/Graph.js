@@ -1,6 +1,7 @@
 class Graph {
   constructor() {
     this.range = [];
+    this.mark = [];
   }
 
   showGraph() {
@@ -76,8 +77,45 @@ class Graph {
             this.range[i].edge.splice(j, 1);
             break;
           }
+          if (j == this.range[i].edge.length-1) {
+            console.log("has not data");
+          }
         }
         break;
+      }
+    }
+  }
+
+  dfs(v) {
+    if (this.mark[v] == undefined) {
+      console.log("Visited: " + this.range[v].vertex);
+      this.mark[v] = true;
+    }
+    for (var i=0; i<this.range[v].edge.length; i++) {
+      var currentEdge = this.range[v].edge[i];
+      if (!this.mark[currentEdge]) {
+        this.dfs(currentEdge);
+      }
+    }
+    this.mark = [];
+  }
+
+  bfs(v) {
+    var queue = [];
+    this.mark[v] = true;
+    queue.push(v);
+
+    while (queue.length > 0) {
+      var vertex = queue.shift();  // FIFO
+      if (vertex != undefined) {
+        console.log('Visited: ' + this.range[vertex]);
+        this.mark[vertex] = true;
+      }
+      for (var i=0; i<this.range[v].edge.length; i++) {
+        var currentEdge = this.range[v].edge[i];
+        if (!this.mark[currentEdge]) {
+          queue.push[currentEdge];
+        }
       }
     }
   }
