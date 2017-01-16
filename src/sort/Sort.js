@@ -47,6 +47,19 @@ class Sort {
     }
   }
 
+  shellSort() {
+    // _printCurrentStatus(1, this.data);
+    var k = this.data.length;
+    while (k > 0) {
+      k = k / 3 + 1;  // 4, 2, 1
+      for (var i=0; i<k; i++) {
+        for (var j=i+k; i<k; i+=k) {
+
+        }
+      }
+    }
+  }
+
   _printCurrentStatus(seq, data) {
     var temp = seq + ": ";
     for (var i=0; i<data.length; i++) {
