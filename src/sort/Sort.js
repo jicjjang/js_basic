@@ -66,6 +66,45 @@ class Sort {
     }
   }
 
+  mergeSort(start, end) {
+    var mid = null;
+
+    if (start < end) {
+      mid = (start + end) / 2;
+      mergeSort(start, mid);
+      mergeSort(mid+1, end);
+      _merge(start, mid, end);
+    }
+  }
+
+  _merge(start, mid, end) {
+    var tempStart = start;
+    var tempEnd = end;
+    var tempData = [];
+    var i = 0;
+
+    for (i=0; tempStart <= mid && tempEnd <= end; i++) {
+      if (this.data[tempStart] < this.data[tempEnd]) {
+        tempData[i] = this.data[tempStart];
+        tempStart++;
+      } else {
+        tempData[i] = this.data[tempEnd];
+        tempEnd++;
+      }
+    }
+
+    // Add remaining data.
+    if (tempStart <= mid) { // Left data
+      for (var j=tempStart; tempStart <= mid; j++) {
+        tempData[i] = this.data[j];
+      }
+    } else {  // Right data
+      for (var j=tempEnd; tempEnd <= end; j++) {
+        tempData[i] = this.data[j];
+      }
+    }
+  }
+
   _printCurrentStatus(seq, data) {
     var temp = seq + ": ";
     for (var i=0; i<data.length; i++) {
