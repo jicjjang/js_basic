@@ -48,14 +48,20 @@ class Sort {
   }
 
   shellSort() {
-    // _printCurrentStatus(1, this.data);
-    var k = this.data.length;
-    while (k > 0) {
-      k = k / 3 + 1;  // 4, 2, 1
-      for (var i=0; i<k; i++) {
-        for (var j=i+k; i<k; i+=k) {
-
+    var size = this.data.length;
+    var interval = size;
+    _printCurrentStatus("init data", this.data);
+    while (interval > 1) {
+      interval = parseInt(interval / 3) + 1;  // 4, 2, 1
+      for (var i=0; i<interval; i++) {
+        for (var j=i+interval; j<size; j+=interval) {
+          if (this.data[j-interval] > this.data[j]) {
+            var temp = this.data[j-interval];
+            this.data[j-interval] = this.data[j];
+            this.data[j] = temp;
+          }
         }
+        _printCurrentStatus("gap " + interval, this.data);
       }
     }
   }
