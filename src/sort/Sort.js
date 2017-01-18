@@ -105,6 +105,37 @@ class Sort {
     }
   }
 
+  quickSort(left, right) {
+    var pivot = this.data[parseInt((left + right) / 2)]; // 가운뎃 값을 pivot으로.
+    var l = left;
+    var r = right;
+
+    _printCurrentStatus(1, this.data);
+    while (l <= r) {
+      while (this.data[l] < pivot) {
+        l++;
+      }
+      while (this.data[r] > pivot) {
+        r--;
+      }
+      if (l < r) {
+        var temp = null;
+        temp = this.data[l];
+        this.data[l++] = this.data[r];
+        this.data[r++] = temp;
+      } else if (l == r) {
+        return;
+      }
+    }
+
+    if (left < r) {
+      quickSort(left, r);
+    }
+    if (l < right) {
+      quickSort(l, right);
+    }
+  }
+
   _printCurrentStatus(seq, data) {
     var temp = seq + ": ";
     for (var i=0; i<data.length; i++) {
