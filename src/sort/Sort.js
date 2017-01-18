@@ -105,27 +105,37 @@ class Sort {
     }
   }
 
+  // 수정 필요.
   quickSort(left, right) {
-    var pivot = this.data[parseInt((left + right) / 2)]; // 가운뎃 값을 pivot으로.
-    var l = left;
+    var pivot = this.data[left]; // 가운뎃 값을 pivot으로.
+    var l = left + 1;
     var r = right;
 
     _printCurrentStatus(1, this.data);
-    while (l <= r) {
-      while (this.data[l] < pivot) {
+    while (l < r) {
+      while (this.data[l] < pivot && l < r) {
         l++;
       }
-      while (this.data[r] > pivot) {
+      while (this.data[r] > pivot && r > l) {
         r--;
       }
       if (l < r) {
         var temp = null;
         temp = this.data[l];
         this.data[l++] = this.data[r];
-        this.data[r++] = temp;
-      } else if (l == r) {
-        return;
+        this.data[r--] = temp;
       }
+    }
+
+    // pivot
+    if (l == r) {
+      var tmp = this.data[l];
+      this.data[l] = this.data[left];
+      this.data[left] = tmp;
+    } else {
+      var tmp = this.data[l-1];
+      this.data[l-1] = this.data[left];
+      this.data[left] = tmp;
     }
 
     if (left < r) {
