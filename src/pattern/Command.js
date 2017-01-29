@@ -20,6 +20,8 @@ class moneyManager {
   }
 }
 
+// After build
+
 var testMoneyManager = new moneyManager();
 testMoneyManager.execute("aaaa", "b", 1234);              // Uncaught error!
 testMoneyManager.execute("vehicle", "car", 831683);       // vehicle: car, 831683

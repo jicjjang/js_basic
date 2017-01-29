@@ -34,6 +34,8 @@ class Observer {
   }
 }
 
+// After build
+
 var subject = new Subject();
 
 var observer1 = new Observer();
