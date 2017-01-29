@@ -86,5 +86,4 @@ console.log(C3.prototype.x);    // 30
 // 1. local property is free.
 // 2. If has not function property, that was override to prototype property.
 // 3. If has not prototype property, this wasn't override to function property,
-
 // new A() is call prototype. but, First priority has property variable. next, prototype property.

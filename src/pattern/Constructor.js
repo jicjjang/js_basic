@@ -8,7 +8,6 @@ class Constructor {
   }
 
   // Es6 - Overloading is impassible
-
   // Ess6 - Overriding is passible.
   // Because, basically constructor is returned created null object when class haven't variables. (or functions)
 
