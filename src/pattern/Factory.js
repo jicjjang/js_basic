@@ -17,7 +17,7 @@ class AnimalFactory {
 
 class Animal {
   howling() {
-    console.log("what's your name?");
+    throw "write your name!"
   }
 }
 
@@ -49,4 +49,4 @@ var d = AnimalFactory.create();
 a.howling();    // meow
 b.howling();    // wal
 c.howling();    // ggwak
-d.howling();    // what's your name?
+d.howling();    // Uncaught write your name!
