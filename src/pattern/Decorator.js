@@ -28,7 +28,7 @@ class LaneDecorator extends DisplayDecorator {
 
   draw() {
     super.draw()
-    drawLane()
+    this.drawLane()
   }
 
   drawLane() {
@@ -43,10 +43,21 @@ class TrafficDecorator extends DisplayDecorator {
 
   draw() {
     super.draw()
-    drawLane()
+    this.drawTraffic()
   }
 
   drawTraffic() {
     console.log("draw traffic")
   }
 }
+
+// After build
+
+var basic = new BasicRoad();
+basic.draw();
+
+var lane = new LaneDecorator(basic);
+lane.draw();
+
+var traffic = new TrafficDecorator(basic);
+traffic.draw();
